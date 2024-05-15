@@ -2,24 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWalkState : PlayerGroundState
+public class PlayerFallState : PlayerState
 {
-    public PlayerWalkState(Player player, PlayerStateMachine stateMachine, string boolName) : base(player, stateMachine, boolName)
+    public PlayerFallState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        if (player.MovementCompo.IsGround) {
+            stateMachine.ChangeState(PlayerStateEnum.Idle);
+        }
         HandleMovementEvent();
     }
 
-
+    
     private void HandleMovementEvent() {
         if (player.InputReader.xMovement.sqrMagnitude < Mathf.Epsilon) {
             player.StateMachine.ChangeState(PlayerStateEnum.Idle);

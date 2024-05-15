@@ -5,13 +5,16 @@ using UnityEngine;
 
 public enum PlayerStateEnum {
     Idle,
-    Walk
+    Walk,
+    Jump,
+    Fall
 }
 
 public class Player : Agent
 {
     [Header("Setting Values")]
     public float moveSpeed;
+    public float jumpPower;
     public PlayerStateMachine StateMachine {get; protected set;}
     [SerializeField] private InputReader inputReader;
     public InputReader InputReader => inputReader;

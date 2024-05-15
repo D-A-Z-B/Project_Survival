@@ -24,7 +24,6 @@ public class AgentMovement : MonoBehaviour
 
     public void SetMovement(Vector3 movement) {
         velocity = movement;
-        Debug.Log(movement);
     }
 
     public void StopImmediately() {
@@ -42,5 +41,10 @@ public class AgentMovement : MonoBehaviour
         else {
             return false;
         }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + offset, groundCheckSize);
     }
 }
