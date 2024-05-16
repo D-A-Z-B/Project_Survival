@@ -6,8 +6,8 @@ using UnityEngine;
 public enum PlayerStateEnum {
     Idle,
     Walk,
-    Jump,
-    Fall
+/*     Run,
+    Roll */
 }
 
 public class Player : Agent

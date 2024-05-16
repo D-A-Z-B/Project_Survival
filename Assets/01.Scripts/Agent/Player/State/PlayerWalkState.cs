@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWalkState : PlayerGroundState
+public class PlayerWalkState : PlayerState
 {
     public PlayerWalkState(Player player, PlayerStateMachine stateMachine, string boolName) : base(player, stateMachine, boolName)
     {
@@ -21,11 +21,11 @@ public class PlayerWalkState : PlayerGroundState
 
 
     private void HandleMovementEvent() {
-        if (player.InputReader.xMovement.sqrMagnitude < Mathf.Epsilon) {
+        if (player.InputReader.movement.sqrMagnitude < Mathf.Epsilon) {
             player.StateMachine.ChangeState(PlayerStateEnum.Idle);
         }
         else {
-            player.MovementCompo.SetMovement(player.InputReader.xMovement * player.moveSpeed);
+            player.MovementCompo.SetMovement(player.InputReader.movement * player.moveSpeed);
         }
     }
 }
