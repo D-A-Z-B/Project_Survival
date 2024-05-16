@@ -20,7 +20,6 @@ public class PlayerStateMachine
 
     public void ChangeState(PlayerStateEnum newState) {
         if (player.CanStateChangeable == false) return;
-        Debug.Log(newState);
         CurrentState.Exit();
         CurrentState = stateDictionary[newState];
         CurrentState.Enter();

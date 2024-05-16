@@ -17,7 +17,7 @@ public class PlayerGroundState : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
-        if (player.RigidCompo.velocity.y < 0) {
+        if (player.RigidCompo.velocity.y < 0 && !player.MovementCompo.IsGround) {
             stateMachine.ChangeState(PlayerStateEnum.Fall);
         }
     }
@@ -29,7 +29,7 @@ public class PlayerGroundState : PlayerState
     }
 
     private void HandleJumpEvent() {
-        if (player.MovementCompo.IsGround) return;
+        if (!player.MovementCompo.IsGround) return;
         stateMachine.ChangeState(PlayerStateEnum.Jump);
     }
 }
