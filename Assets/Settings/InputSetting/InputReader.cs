@@ -8,6 +8,7 @@ using static Controls;
 [CreateAssetMenu(menuName = "SO/InputReader")]
 public class InputReader : ScriptableObject, IPlayerActions
 {
+    public event Action JumpEvent;
 
     private Controls _controls;
     public Controls GetControl()
@@ -26,9 +27,16 @@ public class InputReader : ScriptableObject, IPlayerActions
         _controls.Player.Enable();
     }
 
-    public Vector2 movement;
+    public Vector2 xMovement;
     public void OnMovement(InputAction.CallbackContext context)
     {
-        movement = context.ReadValue<Vector2>();
+        xMovement = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed) {
+            JumpEvent?.Invoke();
+        }
     }
 }

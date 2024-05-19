@@ -31,7 +31,7 @@ public class AgentMovement : MonoBehaviour
     }
 
     private void Move() {
-        agent.RigidCompo.velocity = velocity;
+        agent.RigidCompo.velocity = new Vector2(velocity.x, agent.RigidCompo.velocity.y);
     }
 
     private bool IsGroundMethod() {
