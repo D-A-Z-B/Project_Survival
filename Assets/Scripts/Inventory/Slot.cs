@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,14 @@ public class SlotData {
 
 public class Slot : MonoBehaviour
 {
-    [SerializeField] private SlotData slotData;
+    public SlotData slotData;
+    public bool isEmpty;
+    private TMP_Text amountText;
     private Color color;
     private void Awake() {
+        isEmpty = true;
         Transform itemImageTransform = transform.Find("ItemImage");
+        amountText = transform.Find("Amount").GetComponent<TMP_Text>();
         if (itemImageTransform != null) {
             slotData.itemImage = itemImageTransform.GetComponent<Image>();
             if (slotData.itemImage != null) {
@@ -30,14 +35,19 @@ public class Slot : MonoBehaviour
         }
     }
 
-    public void UpdateSlot(ItemSO itemSO) {
+    public void UpdateSlot(Item item) {
         if (slotData.itemImage != null) {
-            slotData.itemSO = itemSO;
-            slotData.itemImage.sprite = itemSO.ItemImage;
+            slotData.itemSO = item.itemSO;
+            slotData.itemImage.sprite = item.GetComponent<SpriteRenderer>().sprite;
             color.a = 1;
             slotData.itemImage.color = color;
         } else {
             Debug.LogError("Image component is not assigned, cannot update slot.");
         }
+        if (amountText != null && item.itemSO.IsStack) {
+            slotData.amount++;
+            amountText.text = slotData.amount.ToString();
+        }
+        isEmpty = false;
     }
 }

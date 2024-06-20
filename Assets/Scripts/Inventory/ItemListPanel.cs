@@ -6,6 +6,10 @@ public class ItemListPanel : MonoBehaviour
 {
     public ItemList[] itemLists;
 
+    private void Start() {
+        SelectItemList(CategoryType.Equipment);
+    }
+
     public void SelectItemList(CategoryType type) {
         foreach (ItemList iter in itemLists) {
             if (iter.type == type) {

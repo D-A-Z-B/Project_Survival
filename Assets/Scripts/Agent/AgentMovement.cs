@@ -20,6 +20,7 @@ public class AgentMovement : MonoBehaviour
 
     private void FixedUpdate() {
         Move();
+        Filp();
     }
 
     public void SetMovement(Vector3 movement) {
@@ -32,6 +33,15 @@ public class AgentMovement : MonoBehaviour
 
     private void Move() {
         agent.RigidCompo.velocity = new Vector2(velocity.x, agent.RigidCompo.velocity.y);
+    }
+
+    private void Filp() {
+        if (agent.InputReader.xMovement.x < 0) {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (agent.InputReader.xMovement.x > 0) {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
 
     private bool IsGroundMethod() {

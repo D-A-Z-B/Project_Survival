@@ -6,9 +6,15 @@ using UnityEngine.InputSystem;
 using static Controls;
 
 [CreateAssetMenu(menuName = "SO/InputReader")]
-public class InputReader : ScriptableObject, IPlayerActions
+public class InputReader : ScriptableObject, IPlayerActions, IUIActions
 {
+    #region Player 
     public event Action JumpEvent;
+    #endregion
+
+    #region UI
+    public event Action InvenEvent;
+    #endregion
 
     private Controls _controls;
     public Controls GetControl()
@@ -22,9 +28,11 @@ public class InputReader : ScriptableObject, IPlayerActions
         {
             _controls = new Controls();
             _controls.Player.SetCallbacks(this);
+            _controls.UI.SetCallbacks(this);
         }
 
         _controls.Player.Enable();
+        _controls.UI.Enable();
     }
 
     public Vector2 xMovement;
@@ -37,6 +45,13 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         if (context.performed) {
             JumpEvent?.Invoke();
+        }
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed) {
+            InvenEvent?.Invoke();
         }
     }
 }
