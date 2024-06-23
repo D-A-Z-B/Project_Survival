@@ -14,8 +14,8 @@ public class InventoryCategory : MonoBehaviour, IPointerClickHandler
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        UIManager.Instance.inventory.inventoryCategoryPanel.SelectCategory(type);
-        UIManager.Instance.inventory.itemListPanel.SelectItemList(type);
+        UIManager.Instance.inventory.InventoryCategoryPanel.SelectCategory(type);
+        UIManager.Instance.inventory.ItemListPanel.SelectItemList(type);
     }
 
     public void SetColor(Color color) {

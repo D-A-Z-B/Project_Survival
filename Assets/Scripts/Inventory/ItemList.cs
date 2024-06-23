@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,6 +9,7 @@ public class ItemList : MonoBehaviour, IActive
     public CategoryType type;
     private GameObject content;
     private Slot[] slots;
+    public event Action<Item> AddItemEvent; 
 
     private void Awake() {
         if (content == null) {
@@ -34,14 +36,16 @@ public class ItemList : MonoBehaviour, IActive
                 if (slot.slotData.itemSO == item.itemSO) {
                     if (slot.slotData.amount < item.itemSO.CanStackMaxAmount) {
                         slot.UpdateSlot(item);
+                        AddItemEvent?.Invoke(item);
                         return true;
                     }   
                 }
             }
-            // 여기까지 오면 겹치는게 없는 거임
+            // 여기까지 오면 겹칠수 있는게 없는거임
             foreach (Slot slot in slots) {
                 if (slot.isEmpty) {
                     slot.UpdateSlot(item);
+                    AddItemEvent?.Invoke(item);
                     return true;
                 }
             }
@@ -50,6 +54,7 @@ public class ItemList : MonoBehaviour, IActive
             Debug.Log("ddd");
             if (slot.isEmpty) {
                 slot.UpdateSlot(item);
+                AddItemEvent?.Invoke(item);
                 return true;
             }
         }

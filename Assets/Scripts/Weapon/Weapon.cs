@@ -22,8 +22,7 @@ public class Weapon : MonoBehaviour
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = mousePos - (Vector2)player.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.position = (Vector2)player.transform.position + new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad) * offset,Mathf.Sin(angle * Mathf.Deg2Rad) * offset);
-        Debug.Log(angle);
+        transform.position = (Vector2)player.transform.position + new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad) * offset, Mathf.Sin(angle * Mathf.Deg2Rad) * offset);
         if (Mathf.Abs(angle) > 90) {
             transform.eulerAngles = new Vector3(180, 0, -angle);
         }

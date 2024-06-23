@@ -20,7 +20,7 @@ public abstract class Item : MonoBehaviour
     }
 
     private void AddItem() {
-        foreach (ItemList list in UIManager.Instance.inventory.itemListPanel.itemLists) {
+        foreach (ItemList list in UIManager.Instance.inventory.ItemListPanel.itemLists) {
             if (list.type == itemSO.ItemType) {
                 bool flag = list.AddItem(this);
                 Debug.Log(list.type);
