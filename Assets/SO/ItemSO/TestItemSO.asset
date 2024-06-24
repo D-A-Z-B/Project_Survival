@@ -15,5 +15,6 @@ MonoBehaviour:
   ItemType: 1
   IsStack: 1
   CanStackMaxAmount: 2
+  ItemWeight: 100
   ItemName: ddd
   ItemDescription: dd

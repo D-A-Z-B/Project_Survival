@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 0
   IsStack: 0
   CanStackMaxAmount: 0
-  ItemName: 
-  ItemDescription: 
-  bagLevel: 0
-  weight: 0
+  ItemName: Bag
+  ItemDescription: "\uAC00\uBC29 \uB808\uBCA83"
+  bagLevel: 3
+  weight: 600

@@ -27,8 +27,19 @@ public class InventoryWeight : MonoBehaviour
     }
 
     private void AddItemHandle(Item item) {
-        // 아래 값은 테스트임
-        currntWeight += 100;
+        currntWeight += item.itemSO.ItemWeight;
+        float percent = (float)currntWeight / (float)currentMaxWeight;
+        percent = Mathf.Clamp01(percent);
+        slider.value = percent;
+        fill.color = gradient.Evaluate(percent);
+    }
+
+    private void RemoveItem(Item item)  {
+        currntWeight -= item.itemSO.ItemWeight;
+        float percent = (float)currntWeight / (float)currentMaxWeight;
+        percent = Mathf.Clamp01(percent);
+        slider.value = percent;
+        fill.color = gradient.Evaluate(percent);
     }
 
     private void UpdateBagHandle(BagSO bagSO) {

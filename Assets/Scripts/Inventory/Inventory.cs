@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour, IActive
     public ItemListPanel ItemListPanel {get; private set;}
     public InventoryCategoryPanel InventoryCategoryPanel {get; private set;}
     public InventoryWeight InventoryWeight {get; private set;}
-    public BagSO CurrentBag {get; private set;}
+    [field:SerializeField] public BagSO CurrentBag {get; private set;}
     public event Action<BagSO> UpdateBag;
     private Transform visual;
 
@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour, IActive
     }
 
     private void Start() {
+        UpdateBag?.Invoke(CurrentBag);
         Active(false);
     }
 
