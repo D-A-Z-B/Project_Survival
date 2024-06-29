@@ -9,13 +9,13 @@ public enum UIType{
 
 public class UIManager : MonoSingleton<UIManager>
 {
-    private Canvas inGameUICanvas;
+    public Canvas InGameUICanvas {get; private set;}
     public Inventory inventory {get; private set;}
     public InputReader inputReader;
 
     private void Awake() {
-        inGameUICanvas = FindObjectOfType<Canvas>();
-        inventory = inGameUICanvas.GetComponentInChildren<Inventory>();
+        InGameUICanvas = FindObjectOfType<Canvas>();
+        inventory = InGameUICanvas.GetComponentInChildren<Inventory>();
         inputReader.InvenEvent += InvenEventHandle;
     }
 

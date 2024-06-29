@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using static Controls;
 
 [CreateAssetMenu(menuName = "SO/InputReader")]
@@ -10,11 +11,14 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
 {
     #region Player 
     public event Action JumpEvent;
+    public event Action AttackEvent;
     #endregion
 
     #region UI
     public event Action InvenEvent;
     #endregion
+
+    private bool isDragging = false;
 
     private Controls _controls;
     public Controls GetControl()
@@ -53,5 +57,14 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
         if (context.performed) {
             InvenEvent?.Invoke();
         }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(!EventSystem.current.IsPointerOverGameObject()) {  
+            if (context.performed) {
+                AttackEvent?.Invoke();
+            }
+	    }
     }
 }

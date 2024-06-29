@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -15,12 +16,13 @@ public class Slot : MonoBehaviour
     public bool isEmpty;
     private TMP_Text amountText;
     private Color color;
+    [HideInInspector] public Transform itemIcon;
     private void Awake() {
         isEmpty = true;
-        Transform itemImageTransform = transform.Find("ItemImage");
-        amountText = transform.Find("Amount").GetComponent<TMP_Text>();
-        if (itemImageTransform != null) {
-            slotData.itemImage = itemImageTransform.GetComponent<Image>();
+        itemIcon = transform.Find("ItemIcon");
+        amountText = itemIcon.transform.Find("Amount").GetComponent<TMP_Text>();
+        if (itemIcon != null) {
+            slotData.itemImage = itemIcon.Find("ItemImage").GetComponent<Image>();
             if (slotData.itemImage != null) {
                 color = slotData.itemImage.color;
                 if (slotData.itemImage.sprite == null) {

@@ -7,7 +7,8 @@ public enum PlayerStateEnum {
     Idle,
     Walk,
     Jump,
-    Fall
+    Fall,
+    Attack
 }
 
 public class Player : Agent

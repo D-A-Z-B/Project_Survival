@@ -19,11 +19,6 @@ public class PlayerFallState : PlayerState
 
     
     private void HandleMovementEvent() {
-        if (player.InputReader.xMovement.sqrMagnitude < Mathf.Epsilon) {
-            player.StateMachine.ChangeState(PlayerStateEnum.Idle);
-        }
-        else {
-            player.MovementCompo.SetMovement(player.InputReader.xMovement * player.moveSpeed);
-        }
+        player.MovementCompo.SetMovement(player.InputReader.xMovement * player.moveSpeed);
     }
 }

@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aec4e21a1978cf4b9ad5701abb91b60, type: 3}
-  m_Name: PoolingItemTable
+  m_Script: {fileID: 11500000, guid: 8dbc3654388efdf47b65322eac407042, type: 3}
+  m_Name: Pool_Bullet
   m_EditorClassIdentifier: 
-  datas:
-  - {fileID: 11400000, guid: 88841cb34ef0b4846adafabb810f3464, type: 2}
+  enumName: Bullet
+  poolingName: Bullet
+  description: 
+  poolCount: 100
+  prefab: {fileID: 1920536063528769549, guid: 39c2b7db95b959b469a6d3359f8e0a7a, type: 3}

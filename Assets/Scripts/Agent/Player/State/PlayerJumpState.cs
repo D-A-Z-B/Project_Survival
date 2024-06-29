@@ -18,7 +18,7 @@ public class PlayerJumpState : PlayerState
     {
         base.UpdateState();
         if (player.RigidCompo.velocity.y < 0f ) {
-            stateMachine.ChangeState(PlayerStateEnum.Fall);
+            //stateMachine.ChangeState(PlayerStateEnum.Fall);
         }
         else if (player.MovementCompo.IsGround) {
             stateMachine.ChangeState(PlayerStateEnum.Idle);

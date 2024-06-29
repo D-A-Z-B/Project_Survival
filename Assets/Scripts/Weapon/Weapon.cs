@@ -7,14 +7,16 @@ public class Weapon : MonoBehaviour
 {
     public float offset;
     private Player player;
+    public Animator anim {get; private set;}
 
     private void Awake() {
         Transform parent;
         parent = GetComponent<Transform>();
         player = parent.GetComponentInParent<Player>();
+        anim = GetComponent<Animator>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         LookMousePos();
     }
 
