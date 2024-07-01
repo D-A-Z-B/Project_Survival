@@ -17,7 +17,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void UpdateState()
     {
         base.UpdateState();
-        if (player.InputReader.xMovement.sqrMagnitude > 0.01f) {
+        if (player.InputReader.movement.sqrMagnitude > 0.01f) {
             stateMachine.ChangeState(PlayerStateEnum.Walk);
         }
     }

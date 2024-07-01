@@ -39,10 +39,10 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
         _controls.UI.Enable();
     }
 
-    public Vector2 xMovement;
+    public Vector2 movement;
     public void OnMovement(InputAction.CallbackContext context)
     {
-        xMovement = context.ReadValue<Vector2>();
+        movement = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)

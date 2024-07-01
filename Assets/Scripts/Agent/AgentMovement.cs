@@ -36,10 +36,10 @@ public class AgentMovement : MonoBehaviour
     }
 
     private void Filp() {
-        if (agent.InputReader.xMovement.x < 0) {
+        if (agent.InputReader.movement.x < 0) {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (agent.InputReader.xMovement.x > 0) {
+        else if (agent.InputReader.movement.x > 0) {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }

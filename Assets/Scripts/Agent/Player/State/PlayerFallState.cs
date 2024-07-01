@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFallState : PlayerState
+public class PlayerFallState : PlayerCanAttackState
 {
     public PlayerFallState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
@@ -19,6 +19,6 @@ public class PlayerFallState : PlayerState
 
     
     private void HandleMovementEvent() {
-        player.MovementCompo.SetMovement(player.InputReader.xMovement * player.moveSpeed);
+        player.MovementCompo.SetMovement(player.InputReader.movement * player.moveSpeed);
     }
 }

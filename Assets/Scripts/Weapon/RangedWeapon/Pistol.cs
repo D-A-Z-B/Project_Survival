@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Pistol : RangedWeapon
 {
+    [SerializeField] private LayerMask hitLayer;
     public override void Shoot()
     {
+        Vector2 playerPos = PlayerManager.Instance.Player.transform.position;
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePos - (Vector2)transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 10);
-        Vector2 endPoint = hit.collider != null ? hit.point : (Vector2)transform.position + direction * 10;
+        Vector2 direction = (mousePos - playerPos).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(playerPos, direction, 7, hitLayer);
+        Vector2 endPoint = hit.collider != null ? hit.point : (Vector2)transform.position + direction * 7;
         Bullet bullet = PoolManager.Instance.Pop(ObjectPooling.PoolingType.Bullet) as Bullet;
-        bullet.DrawTrail(transform.position, endPoint, 0.02f);
+        bullet.DrawTrail(transform.position, endPoint, 0.01f);
     }
 }

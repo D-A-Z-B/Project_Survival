@@ -19,16 +19,16 @@ public class UIManager : MonoSingleton<UIManager>
         inputReader.InvenEvent += InvenEventHandle;
     }
 
-    bool isOpen = false;  
+    bool invenIsOpen = false;  
     private void InvenEventHandle()
     {
-        if (!isOpen) {
+        if (!invenIsOpen) {
             Open(UIType.Inventory);
-            isOpen = true;
+            invenIsOpen = true;
         }
         else {
             Close(UIType.Inventory);
-            isOpen = false;
+            invenIsOpen = false;
         }
     }
 
