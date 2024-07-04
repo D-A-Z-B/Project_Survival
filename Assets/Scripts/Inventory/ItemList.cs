@@ -9,7 +9,7 @@ public class ItemList : MonoBehaviour, IActive
     public CategoryType type;
     private GameObject content;
     private Slot[] slots;
-    public event Action<Item> AddItemEvent; 
+    public event Action<Item> AddItemEvent;
 
     private void Awake() {
         if (content == null) {
@@ -51,14 +51,26 @@ public class ItemList : MonoBehaviour, IActive
             }
         }
         foreach (Slot slot in slots) {
-            Debug.Log("ddd");
             if (slot.isEmpty) {
                 slot.UpdateSlot(item);
                 AddItemEvent?.Invoke(item);
                 return true;
             }
         }
-        Debug.Log("인벤 꽉참 ㅋㅋ");
         return false;
+    }
+
+    /// <summary>
+    /// 특정 슬롯에 아이템을 삭제
+    /// </summary>
+    public void RemoveItem(Slot slot, int amount) {
+
+    }
+
+    /// <summary>
+    /// 슬롯 상관없이 삭제
+    /// </summary>
+    public void RemoveItem(Item item, int amount) {
+
     }
 }

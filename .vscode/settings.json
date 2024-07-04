@@ -56,5 +56,8 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Project_Survival.sln"
+    "dotnet.defaultSolution": "Project_Survival.sln",
+    "cSpell.words": [
+        "Behaviour"
+    ]
 }

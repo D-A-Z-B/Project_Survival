@@ -10,7 +10,7 @@ public class InventoryWeight : MonoBehaviour
     private Slider slider;
     private Image fill;
     private int currentMaxWeight;
-    private int currntWeight;
+    private int currentWeight;
 
     private void Awake() {
         slider = GetComponentInChildren<Slider>();
@@ -27,16 +27,16 @@ public class InventoryWeight : MonoBehaviour
     }
 
     private void AddItemHandle(Item item) {
-        currntWeight += item.itemSO.ItemWeight;
-        float percent = (float)currntWeight / (float)currentMaxWeight;
+        currentWeight += item.itemSO.ItemWeight;
+        float percent = (float)currentWeight / (float)currentMaxWeight;
         percent = Mathf.Clamp01(percent);
         slider.value = percent;
         fill.color = gradient.Evaluate(percent);
     }
 
     private void RemoveItem(Item item)  {
-        currntWeight -= item.itemSO.ItemWeight;
-        float percent = (float)currntWeight / (float)currentMaxWeight;
+        currentWeight -= item.itemSO.ItemWeight;
+        float percent = (float)currentWeight / (float)currentMaxWeight;
         percent = Mathf.Clamp01(percent);
         slider.value = percent;
         fill.color = gradient.Evaluate(percent);

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public abstract class Item : MonoBehaviour
 {
     public ItemSO itemSO;
-    public Vector2 playrCheckBoxSize;
+    public Vector2 playerCheckBoxSize;
 
     private void Update() {
         if (PlayerCheck()) {
@@ -23,7 +23,6 @@ public abstract class Item : MonoBehaviour
         foreach (ItemList list in UIManager.Instance.inventory.ItemListPanel.itemLists) {
             if (list.type == itemSO.ItemType) {
                 bool flag = list.AddItem(this);
-                Debug.Log(list.type);
                 if (flag) {
                     Destroy(gameObject);
                 }
@@ -33,12 +32,12 @@ public abstract class Item : MonoBehaviour
     }
 
     private bool PlayerCheck() {
-        return  Physics2D.OverlapBox(transform.position, playrCheckBoxSize, 0, LayerMask.GetMask("Player"));
+        return  Physics2D.OverlapBox(transform.position, playerCheckBoxSize, 0, LayerMask.GetMask("Player"));
     }
 
     private void OnDrawGizmos() {
         // player Check gizmos
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, playrCheckBoxSize);
+        Gizmos.DrawWireCube(transform.position, playerCheckBoxSize);
     }
 }
