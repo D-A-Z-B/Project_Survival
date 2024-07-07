@@ -59,11 +59,20 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
         }
     }
 
+    public bool IsFire {get; private set;}
     public void OnAttack(InputAction.CallbackContext context)
     {
         if(!EventSystem.current.IsPointerOverGameObject()) {  
             if (context.performed) {
+                if ((WeaponManager.Instance.CurrentEquippedWeapon as RangedWeapon).FireMode == FireMode.Auto) {
+                    IsFire = true;
+                }
                 AttackEvent?.Invoke();
+            }
+            if (context.canceled) {
+                if (IsFire == true) {
+                    IsFire = false;
+                }
             }
 	    }
     }

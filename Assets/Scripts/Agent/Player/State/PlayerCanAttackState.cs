@@ -15,6 +15,16 @@ public class PlayerCanAttackState : PlayerState
         player.InputReader.AttackEvent += AttackHandle;
     }
 
+    public override void UpdateState()
+    {
+        base.UpdateState();
+        if (player.InputReader.IsFire == true) {
+            RangedWeapon weapon = WeaponManager.Instance.CurrentEquippedWeapon as RangedWeapon;
+            if (weapon.LastShootTime + weapon.FireRate > Time.time) return;
+            player.StateMachine.ChangeState(PlayerStateEnum.Attack);
+        }
+    }
+
     private void AttackHandle()
     {
         if (WeaponManager.Instance.CurrentEquippedWeapon  == null) {

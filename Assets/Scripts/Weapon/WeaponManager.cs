@@ -7,8 +7,8 @@ public class WeaponManager : MonoSingleton<WeaponManager>
     [field:SerializeField] public Weapon[] MeleeWeapons {get; private set;}
     [field:SerializeField] public Weapon[] RangedWeapons {get; private set;}
     [field:SerializeField] public Weapon CurrentEquippedWeapon {get; private set;}
-    private Weapon mainWeapon;
-    private Weapon subWeapon;
+    public Weapon mainWeapon {get; private set;}
+    public Weapon subWeapon {get; private set;}
 
     public void UpdateMainWeapon(Weapon weapon) {
 
