@@ -16,7 +16,7 @@ public class Pistol : RangedWeapon
         Vector2 endPoint = hit.collider != null ? hit.point : (Vector2)transform.position + direction * 7;
         Bullet bullet = PoolManager.Instance.Pop(ObjectPooling.PoolingType.Bullet) as Bullet;
         LastShootTime = Time.time;
-        CameraManager.Instance.Shake(amplitude, frequency, 0.1f);
+        CameraManager.Instance.Shake(amplitude, frequency, 0.05f);
         bullet.DrawTrail(transform.position, endPoint, 0.01f);
     }
 }

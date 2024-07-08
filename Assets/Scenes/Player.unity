@@ -26684,7 +26684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &909620756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31205,7 +31205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1177480345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40055,7 +40055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1656503811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50207,11 +50207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5302044141259048175, guid: 6d5082748ac99a14d936bb7c594a32ef, type: 3}
       propertyPath: amplitude
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5302044141259048175, guid: 6d5082748ac99a14d936bb7c594a32ef, type: 3}
       propertyPath: frequency
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5302044141259048175, guid: 6d5082748ac99a14d936bb7c594a32ef, type: 3}
       propertyPath: shootPoint

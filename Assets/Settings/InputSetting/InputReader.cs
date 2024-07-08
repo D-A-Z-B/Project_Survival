@@ -64,7 +64,8 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
     {
         if(!EventSystem.current.IsPointerOverGameObject()) {  
             if (context.performed) {
-                if ((WeaponManager.Instance.CurrentEquippedWeapon as RangedWeapon).FireMode == FireMode.Auto) {
+                if (WeaponManager.Instance.CurrentEquippedWeapon != null 
+                    && (WeaponManager.Instance.CurrentEquippedWeapon as RangedWeapon).FireMode == FireMode.Auto) {
                     IsFire = true;
                 }
                 AttackEvent?.Invoke();
